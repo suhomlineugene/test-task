@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="table-container">
+    <p-table
+      #dataTable
+      styleClass="table-container"
+      (onLazyLoad)="getTableData($event)"
+      [value]="primengTableHelper.records"
+      [rows]="5"
+      [paginator]="false"
+      [lazy]="true"
+      [scrollable]="true"
+      ScrollWidth="100%"
+      [responsive]="primengTableHelper.isResponsive"
+      [resizableColumns]="primengTableHelper.resizableColumns"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 150px" pSortableColumn="name">
+            {{ "Station Id" }}
+            <p-sortIcon field="name"></p-sortIcon>
+          </th>
+          <th style="width: 150px">
+            {{ "Site Name" }}
+          </th>
+          <th style="width: 150px">
+            {{ "Zdaly gas Brand" }}
+          </th>
+          <th style="width: 150px">
+            {{ "City" }}
+          </th>
+          <th style="width: 100px">
+            {{ "Cluster Median Price" }}
+          </th>
+          <th style="width: 210px">
+            {{ "Client Market Price" }}
+          </th>
+          <th style="width: 100px">
+            {{ "Latitude" }}
+          </th>
+          <th style="width: 130px">
+            {{ "Longitude" }}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-record="$implicit">
+        <tr>
+          <td style="width: 150px">
+            {{ record.stationId }}
+          </td>
+          <td style="width: 150px">
+            {{ record.siteName }}
+          </td>
+          <td style="width: 150px">
+            {{ record.zdalyGasBrand }}
+          </td>
+          <td style="width: 150px">
+            {{ record.city }}
+          </td>
+          <td style="width: 100px">
+            {{ record.clusterMedianPrice }}
+          </td>
+          <td style="width: 210px">
+            {{ record.clientMarketPrice }}
+          </td>
+          <td style="width: 100px">
+            {{ record.latitude }}
+          </td>
+          <td style="width: 130px">
+            {{ record.longitude }}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <div class="charts">
+
+  </div>
+</div>

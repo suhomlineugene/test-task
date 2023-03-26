@@ -1,17 +1,16 @@
 <div class="container">
   <div class="table-container">
     <p-table
-      #dataTable
-      styleClass="table-container"
-      (onLazyLoad)="getTableData($event)"
-      [value]="primengTableHelper.records"
-      [rows]="5"
-      [paginator]="false"
-      [lazy]="true"
-      [scrollable]="true"
-      ScrollWidth="100%"
-      [responsive]="primengTableHelper.isResponsive"
-      [resizableColumns]="primengTableHelper.resizableColumns"
+    #dataTable
+    (onLazyLoad)="getTableData($event)"
+    [value]="primengTableHelper.records"
+    [rows]="primengTableHelper.defaultRecordsCountPerPage"
+    [paginator]="true"
+    [lazy]="true"
+    [scrollable]="true"
+    ScrollWidth="100%"
+    [responsive]="primengTableHelper.isResponsive"
+    [resizableColumns]="primengTableHelper.resizableColumns"
     >
       <ng-template pTemplate="header">
         <tr>
@@ -71,9 +70,18 @@
         </tr>
       </ng-template>
     </p-table>
+
+    <p-paginator
+      [rows]="primengTableHelper.defaultRecordsCountPerPage"
+      #paginator
+      (onPageChange)="getTableData($event)"
+      [totalRecords]="primengTableHelper.totalRecordsCount"
+      [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage"
+    >
+    </p-paginator>
   </div>
 
   <div class="charts">
-
+    <p-chart type="bar" [data]="chartsData" [options]="chartsOptions"></p-chart>
   </div>
 </div>
